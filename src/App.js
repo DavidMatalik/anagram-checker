@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import { sortLetters } from './utils'
 
 function App() {
   const [word1, setWord1] = useState('')
@@ -12,8 +13,8 @@ function App() {
       return
     }
 
-    const sortedWord1 = word1.toLowerCase().split('').sort().join('')
-    const sortedWord2 = word2.toLowerCase().split('').sort().join('')
+    const sortedWord1 = sortLetters(word1)
+    const sortedWord2 = sortLetters(word2)
 
     if (sortedWord1 === sortedWord2) {
       setIsAnagram(true)
