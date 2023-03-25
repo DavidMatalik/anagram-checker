@@ -6,9 +6,9 @@ This is a simple React application to check if two words are anagrams or not.
 
 To install this project locally, you can follow these steps:
 
-1. Clone the repository to your local machine with ssh
+1. Clone the repository to your local machine
 
-`git clone git@github.com:DavidMatalik/anagram-checker.git`
+`git clone https://github.com/DavidMatalik/anagram-checker.git`
 
 2. Navigate to the project directory
 
