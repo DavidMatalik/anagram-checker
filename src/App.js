@@ -31,6 +31,11 @@ function App() {
   return (
     <div className='App'>
       <h2 className='title'>Anagram Checker</h2>
+      <p className='explanation'>
+        An anagram is a word or phrase made by rearranging the letters of
+        another word or phrase. For example, the word "listen" can be rearranged
+        to form the word "silent".
+      </p>
       <div className='form-container'>
         <label htmlFor='word1'>Word 1:</label>
         <input
