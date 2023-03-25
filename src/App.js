@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 
 function App() {
+  const [word1, setWord1] = useState('')
+  const [word2, setWord2] = useState('')
+  const [isAnagram, setIsAnagram] = useState(false)
+  const [feedback, setFeedback] = useState('')
+
+  const checkAnagram = () => {
+    if (!word1 || !word2) {
+      return
+    }
+
+    const sortedWord1 = word1.toLowerCase().split('').sort().join('')
+    const sortedWord2 = word2.toLowerCase().split('').sort().join('')
+
+    if (sortedWord1 === sortedWord2) {
+      setIsAnagram(true)
+      setFeedback('Yeah success: The words are anagrams.')
+      return
+    }
+
+    setIsAnagram(false)
+    setFeedback('The words are not anagrams.')
+  }
+
+  const isButtonDisabled = !word1 || !word2
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className='App'>
+      <h2 className='title'>Anagram Checker</h2>
+      <div className='form-container'>
+        <label htmlFor='word1'>Word 1:</label>
+        <input
+          type='text'
+          id='word1'
+          value={word1}
+          onChange={(e) => setWord1(e.target.value)}
+          className='input'
+        />
+        <label htmlFor='word2'>Word 2:</label>
+        <input
+          type='text'
+          id='word2'
+          value={word2}
+          onChange={(e) => setWord2(e.target.value)}
+          className='input'
+        />
+        <button
+          onClick={checkAnagram}
+          className='button'
+          disabled={isButtonDisabled}
         >
-          Learn React
-        </a>
-      </header>
+          Check Anagram
+        </button>
+      </div>
+      {isAnagram && <p className='message success'>{feedback}</p>}
+      {!isAnagram && <p className='message error'>{feedback}</p>}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
